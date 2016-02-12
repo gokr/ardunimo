@@ -20,7 +20,7 @@ In the repository there is a single trivial application - `blink.nim`, you proba
 6. After a few seconds the green LED on the board should start blinking.
 
 
-# Background
+## Background
 I begun by following these two tutorials:
 
 * http://www.instructables.com/id/Programming-LinkIt-One-in-Linux-no-WiNE/
@@ -31,7 +31,7 @@ Then various googling and staring at the Arduino IDE compilation log led me to p
 After messing around with c2nim for a while I put that into its own Makefile. That Makefile produces a partial Nim wrapper of the Arduino + MediaTek libraries.
 
 
-NOTES:
+## NOTES:
 
 * The wrapper is not complete (I just did what I needed) and in many places probably downright silly, as Andreas mentioned to me. :)
 * Currently the GC can not be turned on (see nim.cfg), we don't know yet what is preventing it.
