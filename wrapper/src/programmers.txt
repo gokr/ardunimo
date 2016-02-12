@@ -1,0 +1,4 @@
+# Add LinkIt ONE firmware updater option as a bootloader tool
+linkitfirmware.name=LinkIt Firmware Updater
+linkitfirmware.communication=usb
+linkitfirmware.program.tool=linkit_tools

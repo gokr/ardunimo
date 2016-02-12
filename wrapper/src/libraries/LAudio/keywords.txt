@@ -1,0 +1,31 @@
+#######################################
+# Syntax Coloring Map For LAudioClass
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+LAudio	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+playFile KEYWORD2
+setVolume	KEYWORD2
+pause	KEYWORD2
+resume	KEYWORD2
+stop	KEYWORD2
+getStatus KEYWORD2
+
+#######################################
+# Object (KEYWORD3)
+#######################################
+LAudio	KEYWORD3
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+

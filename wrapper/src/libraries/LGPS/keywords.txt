@@ -1,0 +1,29 @@
+#######################################
+# Syntax Coloring Map For LGPSClass
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+LGPS	KEYWORD1
+vm_gps_sentence_info KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+powerOn	KEYWORD2
+powerOff	KEYWORD2
+setMode	KEYWORD2
+getData	KEYWORD2
+
+#######################################
+# Object (KEYWORD3)
+#######################################
+LGPS	KEYWORD3
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+

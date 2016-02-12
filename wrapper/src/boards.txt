@@ -1,0 +1,22 @@
+# LinkIt ONE board definition
+linkit_one.name=LinkIt ONE
+linkit_one.vid.0=0x0E8D
+linkit_one.pid.0=0x0023
+linkit_one.upload.tool=linkit_tools
+linkit_one.upload.protocol=mtk-one
+linkit_one.upload.maximum_size=10485760
+linkit_one.upload.use_1200bps_touch=true
+linkit_one.upload.wait_for_upload_port=true
+linkit_one.upload.native_usb=true
+linkit_one.build.mcu=arm7tdmi-s
+linkit_one.build.f_cpu=84000000L
+linkit_one.build.usb_product="LinkIt ONE"
+linkit_one.build.board=MTK_ONE
+linkit_one.build.core=arduino
+linkit_one.build.extra_flags=-D__COMPILER_GCC__ -D__LINKIT_ONE__ -D__LINKIT_ONE_RELEASE__ -mthumb {build.usb_flags}
+linkit_one.build.ldscript=linker_scripts/gcc/scat.ld
+linkit_one.build.variant=linkit_one
+linkit_one.build.variant_system_lib=libmtk.a
+linkit_one.build.vid=0x0E8D
+linkit_one.build.pid=0x0023
+linkit_one.bootloader.tool=linkit_tools

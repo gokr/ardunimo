@@ -1,0 +1,30 @@
+#######################################
+# Syntax Coloring Map For LVoiceCallClass
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+LVoiceCall	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+ready	KEYWORD2
+voiceCall	KEYWORD2
+getVoiceCallStatus	KEYWORD2
+answerCall	KEYWORD2
+retrieveCallingNumber	KEYWORD2
+hangCall	KEYWORD2
+
+#######################################
+# Object (KEYWORD3)
+#######################################
+LVoiceCall	KEYWORD3
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+

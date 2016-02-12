@@ -1,0 +1,9 @@
+#  mangle uint32_t uint32
+#  mangle uint8_t uint8
+#  mangle String ArString
+#  mangle boolean bool
+#  mangle __FlashStringHelper FlashStringHelper
+#  mangle _event_filter_t event_filter_t
+#  mangle _LTaskClass LTaskClass
+#  inheritable Print
+
