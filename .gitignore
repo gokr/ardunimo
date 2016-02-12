@@ -3,3 +3,4 @@
 *.o
 *.vxp*
 core.a
+.vagrant

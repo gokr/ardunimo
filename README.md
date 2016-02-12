@@ -1,10 +1,11 @@
 # Ardunimo
 This is a first stab at Arduino programming on the <a href="https://www.hackster.io/mediateklabs/products/linkit-one">LinkIt ONE development board</a> from MediaTek using the brilliant <a href="http://nim-lang.org">programming language Nim</a>.
-In fact, it is a general attack on using `c2nim` to wrap the Arduino libraries (and the MediaTek libraries) in a semiautomated way.
+
+This project basically consists of two Makefiles, one in the `wrapper`subdirectory that can semiautomatically generate the Nim wrapper of the Arduino and MediaTek libraries for the LinkIt ONE using the very useful `c2nim` tool. The other Makefile in the root directory is for compiling a Nim program using the wrapper and the SDK from MediaTek to produce a .vxp binary file that can be dropped into the USB disk och the board.
 
 ## Installing Nim, nimble and c2nim
 
-First we need to install <a href="https://github.com/nim-lang/nim">Nim</a> (compiler and libs), <a href="https://github.com/nim-lang/nimble">nimble</a> (package manager) and <a href="https://github.com/nim-lang/c2nim">c2nim</a> (wrapper generator tool). I recommend following installation instructions on the github repos, but here is the short way:
+First we need to install <a href="https://github.com/nim-lang/nim">Nim</a> (compiler and libs), <a href="https://github.com/nim-lang/nimble">nimble</a> (package manager) and <a href="https://github.com/nim-lang/c2nim">c2nim</a> (wrapper generator tool). I recommend following installation instructions on the github repos but if you want that information condensed, below is the recipe. And for the **ultra lazy** there is also a VagrantFile with this shell provisioning script, so you can just do `vagrant up && vagrant ssh` to have a working environment.
 
 ```
 # If in a fresh Ubuntu
@@ -34,7 +35,7 @@ nimble install c2nim
 ```
 
 ## Get Ardunimo
-1. Clone this repo to your machine, **only tested on 64 bit Ubuntu 14.04**. The Makefile presumes Nim was cloned to $HOME/Nim.
+1. Clone this repo to your machine (or in the vagrant box), **only tested on 64 bit Ubuntu 14.04**. The Makefile presumes Nim was cloned to `$HOME/Nim`.
 2. Download and install the needed ARM GCC and SDK by running: `cd ardunimo && make sdk`
 
 
