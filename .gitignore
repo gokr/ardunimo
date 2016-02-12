@@ -1,0 +1,5 @@
+*.cpp
+*.c
+*.o
+*.vxp*
+core.a

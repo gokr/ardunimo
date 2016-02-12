@@ -6,6 +6,7 @@ EXECUTABLE = app.vxp
 SDK = $(CURDIR)/sdk
 GCCARM = gcc-arm-none-eabi-4.8.3-2014q1
 MTSDK = mtk-1.1.17
+MTSDKFILE = mediatek_linkit_sdk_\(for_arduino_1.6\)-1.1.17.zip
 ARDUINO = $(SDK)/$(MTSDK)
 ARMBIN = $(SDK)/$(GCCARM)/bin
 CC = $(ARMBIN)/arm-none-eabi-gcc
@@ -30,7 +31,7 @@ CPPFLAGS = $(BASECFLAGS) -fno-non-call-exceptions -fno-rtti -fno-exceptions $(CI
 # Find all .c, .cpp and .ino files to compile in these dirs
 CSOURCES += $(foreach dir,$(BASELIBRARIES),$(wildcard $(ARDUINO)/$(dir)/*.c)) 
 CSOURCES += $(foreach dir,$(BSPLIBRARIES),$(wildcard $(ARDUINO)/$(dir)/*.c))
-CSOURCES += sdk/hardware/arm/1.1.17/cores/arduino/avr/dtostrf.c
+CSOURCES += $(CORE)/avr/dtostrf.c
 CPPSOURCES += $(foreach dir,$(BASELIBRARIES),$(wildcard $(ARDUINO)/$(dir)/*.cpp))
 CPPSOURCES += $(foreach dir,$(BSPLIBRARIES),$(wildcard $(ARDUINO)/$(dir)/*.cpp)) 
 
@@ -47,7 +48,7 @@ ARDUNIMO = wrapper/ardunimo.nim
 # We need to do this in two runs since we do not know
 # how many .cpp files we will produce in the first rule.
 .PHONY: all
-all:
+all: sdk
 	$(MAKE) $(PROJECT).cpp
 	$(MAKE) $(EXECUTABLE)
 
@@ -89,8 +90,11 @@ sdk: $(SDK)/$(GCCARM) $(SDK)/$(MTSDK)
 $(SDK)/$(GCCARM):
 	wget http://downloads.arduino.cc/$(GCCARM)-linux64.tar.gz
 	tar -C $(SDK) -xzf $(GCCARM)-linux64.tar.gz
+	rm $(GCCARM)-linux64.tar.gz
 
 $(SDK)/$(MTSDK):
-	wget http://download.labs.mediatek.com/mediatek_linkit_sdk_\(for_arduino_1.6\)-1.1.17.zip
-	unzip -q -d $(SDK) mediatek_linkit_sdk_\(for_arduino_1.6\)-1.1.17.zip
+	wget http://download.labs.mediatek.com/$(MTSDKFILE)
+	unzip -q -d $(SDK) $(MTSDKFILE)
+	rm $(MTSDKFILE)
 	mv $(SDK)/mtk $(SDK)/mtk-1.1.17
+	cd $(SDK) && patch -s -p0 < sdk-fixes.patch

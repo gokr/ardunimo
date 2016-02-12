@@ -1,0 +1,43 @@
+diff -ruN mtk-1.1.17/cores/arduino/wiring_digital.h mtk-1.1.17.old/cores/arduino/wiring_digital.h
+--- mtk-1.1.17/cores/arduino/wiring_digital.h	2014-11-07 16:03:38.000000000 +0100
++++ mtk-1.1.17.old/cores/arduino/wiring_digital.h	2016-02-09 14:29:45.031353916 +0100
+@@ -26,6 +26,8 @@
+  extern "C" {
+ #endif
+ 
++#include <stdint.h>
++
+ //DESCRIPTION
+ // Sets up modes for assigned pins.
+ //
+diff -ruN mtk-1.1.17/libraries/LAudio/LAudio.cpp mtk-1.1.17.old/libraries/LAudio/LAudio.cpp
+--- mtk-1.1.17/libraries/LAudio/LAudio.cpp	2014-08-27 17:51:42.000000000 +0200
++++ mtk-1.1.17.old/libraries/LAudio/LAudio.cpp	2016-02-06 03:04:20.862965307 +0100
+@@ -20,7 +20,7 @@
+ #include "vmchset.h"
+ #include "vmstdlib.h"
+ #include "LAudio.h"
+-#include "audio.h"
++#include "Audio.h"
+ 
+ static int status_result = 0 ;
+ 
+diff -ruN mtk-1.1.17/libraries/LDateTime/LDateTime.cpp mtk-1.1.17.old/libraries/LDateTime/LDateTime.cpp
+--- mtk-1.1.17/libraries/LDateTime/LDateTime.cpp	2014-08-27 17:52:24.000000000 +0200
++++ mtk-1.1.17.old/libraries/LDateTime/LDateTime.cpp	2016-02-06 03:01:54.906970470 +0100
+@@ -13,7 +13,7 @@
+ */
+ 
+ #include "vmsys.h"
+-#include "LDatetime.h"
++#include "LDateTime.h"
+ 
+ LDateTimeClass::LDateTimeClass()
+ {
+@@ -34,4 +34,4 @@
+ 	return vm_get_rtc(rtc);//return value:-2:failed, rtc is null;  0:success
+ }
+ 
+-LDateTimeClass LDateTime;
+\ No newline at end of file
++LDateTimeClass LDateTime;
