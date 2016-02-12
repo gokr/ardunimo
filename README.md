@@ -1,5 +1,5 @@
 # Ardunimo
-This is a first stab at Arduino programming on the LinkIt ONE development board from MediaTek using the programming language Nim.
+This is a first stab at Arduino programming on the <a href="https://www.hackster.io/mediateklabs/products/linkit-one">LinkIt ONE development board</a> from MediaTek using the brilliant <a href="http://nim-lang.org">programming language Nim</a>.
 In fact, it is a general attack on using `c2nim` to wrap the Arduino libraries (and the MediaTek libraries) in a semiautomated way.
 
 ## Installing
