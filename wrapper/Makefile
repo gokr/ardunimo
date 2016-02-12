@@ -6,7 +6,7 @@ LSTORAGE = $(SRC)/libraries/LStorage
 MTK = $(SRC)/system/libmtk/include
 
 # Tried --nep1 but it led to messy complications 
-C2NIMFLAGS = --cdecl --header --staticlib:core.a --cpp
+C2NIMFLAGS = --cdecl --header --cpp
 
 # Make the wrapper. We list each file manually since we don't want to
 # wrap just all of them.
