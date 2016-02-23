@@ -6,4 +6,5 @@
 #  mangle _event_filter_t event_filter_t
 #  mangle _LTaskClass LTaskClass
 #  inheritable Print
+#  inheritable _LTaskClass
 
