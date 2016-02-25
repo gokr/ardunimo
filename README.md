@@ -1,7 +1,7 @@
 # Ardunimo
 This is a first stab at Arduino programming on the <a href="https://www.hackster.io/mediateklabs/products/linkit-one">LinkIt ONE development board</a> from MediaTek using the brilliant <a href="http://nim-lang.org">programming language Nim</a>.
 
-This project basically consists of two Makefiles, one in the `wrapper`subdirectory that can semiautomatically generate the Nim wrapper of the Arduino and MediaTek libraries for the LinkIt ONE using the very useful `c2nim` tool. The other Makefile in the root directory is for compiling a Nim program using the wrapper and the SDK from MediaTek to produce a .vxp binary file that can be dropped into the USB disk och the board.
+This project basically consists of two Makefiles, one in the `wrapper`subdirectory that can semi automatically generate the Nim wrapper of the Arduino and MediaTek libraries for the LinkIt ONE using the very useful `c2nim` tool. The other Makefile in the root directory is for compiling a Nim program using the wrapper and the SDK from MediaTek to produce a .vxp binary file that can be dropped into the USB disk on the board.
 
 ## Installing Nim, nimble and c2nim
 
@@ -38,6 +38,12 @@ nimble install c2nim
 1. Clone this repo to your machine (or in the vagrant box), **only tested on 64 bit Ubuntu 14.04**. The Makefile presumes Nim was cloned to `$HOME/Nim`.
 2. Download and install the needed ARM GCC and SDK by running: `cd ardunimo && make sdk`
 
+## Patch Nim
+For the moment Ardunimo needs a patched Nim, copy the alloc.nim file to replace the one in your Nim installation:
+```
+cp wrapper/fixed/alloc.nim <whereverNimLives>/lib/system/alloc.nim
+```
+This enables GC to work using malloc.
 
 ## Building blink.nim
 In the repository there is a single trivial application - `blink.nim`, you probably recognize it. To build it and run on your LinkIt One:
@@ -48,6 +54,14 @@ In the repository there is a single trivial application - `blink.nim`, you proba
 4. Copy `app.vxp` to the MRE directory on the device. Also make sure `autostart.txt` maps to `app.vxp`.
 5. Flip the USB mode switch and press the reset button, no need to unplug the USB cable. This will start the application.
 6. After a few seconds the green LED on the board should start blinking.
+
+## Building some other
+Just write `other.nim` and make using:
+```
+make PROJECT=other.nim
+```
+
+Currently `blink`, `blink2` and `nimicro` works.
 
 
 ## Background

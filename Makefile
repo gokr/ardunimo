@@ -20,13 +20,14 @@ PACKTAG = $(SDK)/packtag.py
 
 # Various libraries to search
 BASELIBRARIES := system/libmtk system/libmtk/include cores/arduino variants/linkit_one 
-BSPLIBRARIES := libraries/LGPRS libraries/LDateTime libraries/LAudio libraries/LAudio/utility libraries/LStorage libraries/LGSM libraries/LGSM/utility 
+BSPLIBRARIES := libraries/LGPRS libraries/LGPS libraries/LGPS/utility libraries/LDateTime libraries/LAudio libraries/LAudio/utility libraries/LStorage libraries/LGSM libraries/LGSM/utility 
 
 # Flags picked out from Arduino compilation log
 BASECFLAGS = -c -O2 -g -fpic -fvisibility=hidden -mthumb -mlittle-endian -nostdlib -Dprintf=iprintf -mcpu=arm7tdmi-s -DF_CPU=84000000L -DARDUINO=10605 -DARDUINO_MTK_ONE -DARDUINO_ARCH_ARM -D__COMPILER_GCC__ -D__LINKIT_ONE__ -D__LINKIT_ONE_RELEASE__ -DUSB_VID=0x0E8D -DUSB_PID=0x0023 -DUSBCON -DUSB_MANUFACTURER="Unknown" -DUSB_PRODUCT="LinkIt ONE"
 CINCLUDES = -I/home/gokr/nim/Nim.devel/lib $(foreach dir,$(BASELIBRARIES),-I$(ARDUINO)/$(dir)/) $(foreach dir,$(BSPLIBRARIES),-I$(ARDUINO)/$(dir)/)
 CFLAGS = $(BASECFLAGS) $(CINCLUDES)
-CPPFLAGS = $(BASECFLAGS) -fno-non-call-exceptions -fno-rtti -fno-exceptions $(CINCLUDES) 
+#CPPFLAGS = $(BASECFLAGS) -fno-non-call-exceptions -fno-rtti -fno-exceptions $(CINCLUDES) 
+CPPFLAGS = $(BASECFLAGS) -fexceptions $(CINCLUDES) 
 
 # Find all .c, .cpp and .ino files to compile in these dirs
 CSOURCES += $(foreach dir,$(BASELIBRARIES),$(wildcard $(ARDUINO)/$(dir)/*.c)) 
@@ -58,7 +59,7 @@ $(ARDUNIMO):
 
 # Run Nim compilation only step, see nim.cfg for settings
 $(PROJECT).cpp: $(PROJECT).nim $(ARDUNIMO)
-	nim cpp -d:release -c $(PROJECT).nim 
+	nim cpp --verbosity:3 -d:release -c $(PROJECT).nim 
 	cp nimcache/*.cpp .
 
 # The link and post process binary steps, only "flashing" left manually
@@ -82,7 +83,6 @@ clean:
 	rm -f $(foreach obj,$(OBJECTS), $(obj)) $(EXECUTABLE)
 	rm -f *.c *.cpp *.o *.vxp.map core.a *.vxp.elf
 	rm -rf nimcache
-	touch $(PROJECT).nim
 
 # Get the SDK parts we want
 sdk: $(SDK)/$(GCCARM) $(SDK)/$(MTSDK)
